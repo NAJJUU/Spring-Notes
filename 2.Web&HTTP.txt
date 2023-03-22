@@ -53,3 +53,20 @@
         응답 메시지 수신                응답 메시지 송신
         응답 메시지 해석
         데이터 표시 및 처리 
+    4) http://localhost:8080/day/getdayofweek?year=2023&month=3&day=23
+        -http: getScheme()
+        -localhost: getServerName()
+        -8080: getServerPort()
+        -day(=artifactId): getContextPath()
+        -getdayofweek: getServletPath()(=RequestMapping)
+        -year=2023&month=3&day=23: getQueryString()
+       ?year=2023&month=3&day=23
+        -year&month&day: name 
+        -2023&3&23: value
+        -name과 value가 1:1
+        =>String getParameter(String name)
+       ?year=2023&year=3&year=23
+        -하나의 name에 여러개의 value가 있을 때
+        =>String[] getParameterValues(String name) & Enumeration getParameterNames() 
+          & Map getParameterMap()
+
