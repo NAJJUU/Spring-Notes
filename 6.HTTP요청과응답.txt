@@ -33,3 +33,14 @@
     -데이터를 요청 메세지의 body에 담아 전송
     -보안에 유리, 데이터 공유에는 불리
     -ex: 게시판에 글 쓰기, 로그인, 회원가입
+
+5. MIME(Multipurpose Internet Mail Extensions)
+    1) 텍스트 기반 프로토콜에 바이너리 데이터를 전송하기 위해 고안
+    2) HTTP의 Content-Type 해더에 사용
+    3) 데이터 타입을 명시
+    4) 타입
+        text            텍스트를 포함하는 모든 문서 text/plain, text/html, text/css, text/javascript
+        image           모든 종류의 이미지          image/bmp, image.webp
+        audio           모든 종류의 오디오 파일     audio/midi, audio/mpeg, audio/wav
+        video           모든 종류의 비디오 파일     video/webm, video/ogg  
+        application     모든 종류의 이진 데이터     application/xml, application/pdf
