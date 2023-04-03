@@ -1,0 +1,55 @@
+1. JSP Standard Tag Library(JSTL)
+    0) 조건식이나 반본문 등의 자바 코드를 제거하기 위해서 도입된 기능
+    1) 스크립트릿(<% %>)을 사용하지 않고도 제어문, 반복문 등을 사용할 수 있음
+        -처리해주는 태그 모아 표준으로 만들어 놓은 라이브러리
+    2) EL과 함께 주로 사용함
+        1) Core 태그
+            -변수 선언, 조건문/반복문, URL처리
+            -접두어: c 
+            -URI: "http://java.sun.com/jsp/jstl/core"
+        2) Formatting 태그
+            -숫자, 날짜, 시간 포맷 지정
+            -접두어: fmt 
+            -URI: "http://java.sun.com/jsp/jstl/fmt"
+        3) XML 태그
+        4) Function 태그
+        5) SQL 태그
+
+2. Core 태그
+    1) set 
+        -사용할 변수나 자바빈즈를 생성할 때 사용함
+        -setAttribute() 메서드와 같은 역할
+        -<c:set var="변수명" value="값" scope="영역" />
+            -scope 기본값: page 
+        -target 속성: 자바빈즈를 설정함
+        -property 속성: 자바빈즈의 속성, 즉 멤버 변수의 값을 지정함
+    2) forEach
+        -반복
+        -for문, 향상된 for문 
+        -<c:forEach var = "변수명" begin="시작값" end="마지막 값" step="증가값" />
+        -<c:forEach var = "변수명" items = "컬렉션 혹은 배열" />
+            -varStatus: 루프의 현재 상태를 알려주는 변수의 이름을 지정함
+                -current: var에 지정한 현재 루프의 변수값 반환
+                -index: var에 지정한 현재 루프의 변수값 반환(인덱스를 표시)
+                -count: 실제 반복 횟수
+                -first: 루프의 처음일 때 true 반환
+                -last: 루프의 마지막일 때 true 반환
+    3) if
+        -자바의 if와 동일
+        -else 별도로 없음 
+        -<c:if test="조건" var="변수명" scope="영역">
+            조건이 true일 때 출력할 문장
+         </c:if>
+            -var: 조건의 결과를 저장할 변수명 지정
+    4) choose
+        -다중 조건
+        -<c:choose>
+            <c:when test="조건1">조건1을 만족하는 경우</c:when>
+            <c:when test="조건2">조건2을 만족하는 경우</c:when>
+            <c:otherwise>아무 조건도 만족하지 않는 경우</c:otherwise>
+         </c:choose>
+    5) out 
+        -<c:out value = "출력할 변수" default="기본값" excapeXml=" 특수문자 처리 유무"/>
+        -excapeXml 속성
+            -특수문자를 변환할 지 여부 경정함
+            -기본값은 true임. 특수 기호를 그대로 출력함 

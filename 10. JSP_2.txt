@@ -1,0 +1,57 @@
+1. 유효범위(scope)
+    1) pageContext
+        -1개 JSP페이지
+        -JSP 페이지의 시작부터 끝까지.
+        -해당 JSP 내부에서만 접근가능
+        -페이지당 1개
+    2) request
+        -1+개 JSP 페이지 
+        -요청의 시작부터 응답까지
+        -다른 JSP로 전달 가능(forward)
+        -요청마다 1개
+    3) session 
+        -n개 JSP 페이지 
+        -session의 시작부터 종료까지(=>로그인부터 로그아웃까지)
+        -클라이언트마다 1개 
+    4) application
+        -context 전체
+        -Web application의 시작부터 종료까지
+        -context 내부 어디서나 접근 가능
+        -모든 클라이언트가 공유
+        -context마다 1개 
+
+2. URL 패턴
+    1) @WebServlet으로 서블릿을 URL에 맵핑할 때 사용 
+    2) 종류와 우선순위
+        -exact mapping(정확하게 맞는것)
+            -URL pattern 예: /login/login.do 
+            -매칭 URL: http://localhost/bicycle/login/login.do 
+        -path mapping(경로 맵핑되는 것)
+            -URL pattern 예: /login/*
+            -매칭 URL: http://localhost/bicycle/login/... 
+        -extension mapping(확장자 매핑되는 것)
+            -URL pattern 예: *.do 
+            -매칭 URL: http://localhost/bicycle/.../*.do 
+        -default mapping(디폴트 매핑, 모든 주소)
+            -URL pattern: / 
+            -매칭 URL: http://localhost/bicycle/...
+
+3. EL(Expression Language)
+    0) 표현 언어
+    1) 변수의 값을 출력할 때 사용하는 스크립트 언어임
+    2) 변수의 값을 표현식(<%= %>)보다 편하게 출력할 수 있게 해줌
+        =>${속성}
+    3) JSP의 기본 문법 보완하는 역할
+    4) 4가지 영역(SCOPE) 제공함
+        -JSP 내장 객체의 영역에 담긴 속성을 사용할 수 있음
+        -pageScope
+        -requestScope
+        -sessionScope
+        -applicationScope
+    5) EL의 객체 표현 방식
+        -.(점)이나 [](대괄호)를 사용
+        -ex) ${param.id}
+             ${paramValues.sns[0]}
+    6) 예외와 형변환에 관대함
+        -null인 변수를 사용하면 예외가 발생하지 않음
+    7) 산수연산, 비교연산, 논리연산 가능
