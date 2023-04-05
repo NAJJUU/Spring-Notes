@@ -53,3 +53,7 @@
         -excapeXml 속성
             -특수문자를 변환할 지 여부 경정함
             -기본값은 true임. 특수 기호를 그대로 출력함 
+    6) url 
+        -지정한 경로와 매개변수를 이용해서 context 루트를 포함한 url을 생성함
+        -<form>태그의 action 속성에 사용
+        -<c:url value="설정한 경로" scope="영역" />
