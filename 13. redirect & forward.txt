@@ -1,0 +1,14 @@
+1. Redirect 
+    1) 클라이언트에서 수동으로 write.jsp로 요청(request)
+    2) 서버에서 300번대 응답헤더(redireect)로 응답
+    3) 클라이언트에서 자동으로 login.jsp로 GET 요청
+        -처음 수동으로 GET/POST 요청 가능
+        -redireect는 무조건 GET 요청으로 보냄
+    4) 요청 2번, 응답도 2번
+
+2. Forward
+    1) 클라이언트에서 수동으로 write.jsp로 요청(request)
+    2) write.jsp에서 login.jsp로 request, response를 저장하고 전달
+    3) login.jsp에서 클라이언트로 응답(response)
+    4) 요청 1번, 응답 2번
+    
