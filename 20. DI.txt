@@ -1,0 +1,22 @@
+1. 용어
+    1) DI(Dependency Injection), IoC(Inversion of Control)
+        
+    2) Bean
+        -javaBean
+            -데이터를 저장하기 위한 구조체로서 자바 빈 규약을 따르는 구조체 
+            -private 프로퍼티와 getter/setter로만 데이터를 접근함
+            -인수(argument=parameter)가 없는 기본 생성자가 있음
+        -스프링에서의 bean 
+            -스프링 IoC 컨테이너에 의해 생성되고 관리되는 객체
+            -자바에서처럼 new Object()로 생성되지 않음
+            -각각의 Bean들끼리는 서로를 의존(사용)할 수 있음
+        3) 스프링 컨테이너 개요
+            -ApplicationContext 인터페이스를 통해 제공되는 스프링 컨테이너는 
+             Bean 객체의 생성 및 Bean들의 조합(상호 의존성(=사용))을 담당함
+            -Bean 등록
+                -과거에는 xml로 설정을 따로 관리하여 등록(불편)
+                -현재는 annotation 기반으로 Bean 등록
+                    -@Bean, @Controller, @Service, @Repository..
+        4) POJO(Plain Old Java Object)
+            -객체지향 원리에 충실하면서, 특정 환경이나 규약에 종속되지 않고 
+             필요에 따라 재활용될 수 있는 방식으로 설계된 객체
