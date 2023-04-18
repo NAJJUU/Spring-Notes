@@ -6,10 +6,16 @@
             -데이터를 저장하기 위한 구조체로서 자바 빈 규약을 따르는 구조체 
             -private 프로퍼티와 getter/setter로만 데이터를 접근함
             -인수(argument=parameter)가 없는 기본 생성자가 있음
+        -Servlet & JSP bean 
+            -MVC의 Model
         -스프링에서의 bean 
+            -POJO는 단순, 독립적, 심플하게 만듦
             -스프링 IoC 컨테이너에 의해 생성되고 관리되는 객체
             -자바에서처럼 new Object()로 생성되지 않음
             -각각의 Bean들끼리는 서로를 의존(사용)할 수 있음
+        -ApplicationContext가 담고 있는 객체
+        -제어의 역전(IoC)이 허용된 객체
+        -자주 사용하는 객체를 싱글톤으로 만들어 두고 어디서든 호출해서 사용할 수 있음
         3) 스프링 컨테이너 개요
             -ApplicationContext 인터페이스를 통해 제공되는 스프링 컨테이너는 
              Bean 객체의 생성 및 Bean들의 조합(상호 의존성(=사용))을 담당함
@@ -20,3 +26,33 @@
         4) POJO(Plain Old Java Object)
             -객체지향 원리에 충실하면서, 특정 환경이나 규약에 종속되지 않고 
              필요에 따라 재활용될 수 있는 방식으로 설계된 객체
+
+2. BeanFactory & ApplicationContext
+    1) Bean 저장소
+    2) Bean을 저장, 관리(생명, 소멸, 연결)
+    3) BeanFactory
+        -Bean을 생성, 연결 등의 기본 기능을 정의
+    4) ApplicationContext
+        -BeanFactory를 확장해서 여러 기능을 추가 정의
+        -Spring Container와 같은 의미
+    5) AC 구현체 
+        -GenericXmlApplicationContext
+        -XmlWebApplicationContext
+        -AnnotationConfigApplicationContext
+        -AnnotationConfigWebApplicationContext
+    6) Root AC(ApplicationContext) & Servlet AC
+        -WAS가 실행될 때 web.xml의 ContextLoaderListener를 생성
+            -XmlWebApplicationContext 객체가 생성됨(자식 AC)
+        -이후 DispatcherServlet을 초기화 및 등록하면서 Servlet-context를 
+         사용하면서 XmlWebApplicationContext 생성(부모 AC)
+        -총 2개의 XmlWebApplicationContext 객체가 생성되고 부모 자식관게로 연결됨
+
+3. IoC & DI
+    1) IoC(Inversion of Control)
+        -제어의 흐름을 전통적인 방식과 다르게 뒤바꾸는 것
+        -사용자가 프레임워크 코드를 호출하는 것이 아닌, 프레임워트가 사용자 코드를 호출 
+    2) DI(Dependency Injection) 
+        -의존성 주입
+        -사용할 객체를 외부에서 주입 받는 것
+        -프레임워크가 사용할 코드/객체를 (외부에서) 주입해주는 것
+        
