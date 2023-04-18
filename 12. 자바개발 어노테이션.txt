@@ -9,9 +9,12 @@
     1) @Component
         -해당 클래스가 스프링의 컴포넌트로 등록됨을 나타냄 
         -일반적으로 개발자가 만든 클래스를 객체(Bean)로 등록 시 사용 
+        -<component-scan>로 @Component로 설정된 클래스를 자동 검색해서 빈으로 등록함
     2) @Controller
         -해당 클래스 Controller 역할을 한다는 것을 나타냄
-        -일반적으로 요청(request)을 받아서 처리하고 응답(response)하는 역할
+        -일반적으로 요청(request)을 받아서 처리하고 응답(response)하는 역할 
+    3) @Service
+    4) @Repository
 
 3. API 개발 관련된 어노테이션 
     0) @RestController
@@ -55,3 +58,12 @@
     2) @Resource 
         -애플리케이션에서 필요로 하는 자원을 자동 연결할 때 사용됨
         -의존하는 객체를 주입할 때 주로 Name을 이용하게 됨
+
+6. Bean 등록시 정보
+    1) Bean 이름
+        -기본적으로 원래 Class 이름에서 첫 문자만 소문자로 변경(원하는 경우 변경 가능)
+    2) Class 경로
+    3) Scope(Bean을 생성하는 규칙)
+        -singleton: 컨테이너에 단일로 생성(default)
+        -prototype: 작업시마다 새로운 Bean을 생성
+        -request: http 요청마다 새로운 Bean을 생성 
