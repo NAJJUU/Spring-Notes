@@ -97,3 +97,18 @@
     1) 프런트 컨트롤러인 DispatcherServlet을 중심으로 동작함
     2) MVC(Model-View-Controller)가 협력해 웹 요청과 응답을 처리함 
     
+12. DAO(Data Access Object)
+    1) 데이터(data)에 접근(access)하기 위한 객체(object)
+    2) DataBase에 저장된 데이터를 읽기, 쓰기, 삭제, 변경을 수행(CRUD)
+    3) DB 테이블당 하나의 DAO를 작성(1:1)
+
+13. 검증(Validator)
+    1) 객체를 검증하기 위한 인터페이스
+    2) 객체 검증기 구현에 사용
+    3) 컨트롤러 메서드 안에서가 아닌 검증이란 관심사로 분리해서 구현
+    4) @Valid 
+    5) WebDataBinder에 데이터 검증기에 등록함
+    6) MessageSource
+        -메세지를 읽기 위한 인터페이스 
+        -ResourceBundleMessageSource
+            -프로퍼티 파일을 메세지 소스로 사용 
