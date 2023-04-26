@@ -1,0 +1,18 @@
+1. Layer 분리
+    1) Presentation Layer: Controller
+            |
+       Service Layer(Business Logic): Transaction
+            |
+       Persistence Layer: CRUD
+            |
+            DB
+    2) 기능 추가 / 수정 등 비즈니스 로직이 변화할 경우
+        -Service Layer와 Persistence Layer가 변경되어야 함
+    3) 서비스 계층의 분리
+        -비지니스 로직의 분리
+        -중복 코드 제거 / 관심사의 분리 
+
+2. 트랜잭션 매니저
+    1) DAO의 각 메서드는 개별 Connection을 사용
+    2) Transaction Manager는 같은 트랜잭션 내에서 같은 Connection을 사용할 수 있게 관리해줌
+    3) DataSouceUtils를 사용해야 같은 Tx 내에서 같은 Connection을 사용할 수 있음
