@@ -1,0 +1,17 @@
+1. 게시물 목록과 페이징 처리
+    1) 용어(변수)
+        -page size
+        -navi size
+        -begin page 
+        -end page 
+        -page(현재)
+        -offset
+            -게시물 맨 처음부터 얼마나 떨어져 있는지 나타내는 수 
+                -page               offset 
+                -------------------------------
+                  1                    0
+                  2                   10
+                  3                   20
+                  4                   30
+        -row_count
+            -
