@@ -47,3 +47,10 @@
     3) int insert(String statement)
        int insert(String statement, Object parameter)
         -insert문 실행하고 insert된 행의 갯수를 반환 
+    4) List<E> selectList(String statement)
+       List<E> selectList(String statement, Object parameter)
+        -여러 행을 반환하는 select에 사용
+        -parameter로 sql문에 binding될 값 제공
+    5) int update(String statement)
+       int update(String statement, Object parameter)
+        -update문 실행하고 update된 행의 개수를 반환 
