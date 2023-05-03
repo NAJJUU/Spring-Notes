@@ -15,3 +15,11 @@
                   4                   30
         -row_count
             -(앞으로)읽어올 row의 수
+
+2. URI 정의 
+    1) 읽기: /board/read?bno=번호       GET     지정된 번호의 게시물을 보여줌
+    2) 삭제: /board/remove             POST     게시물 삭제 
+    3) 쓰기: /board/write              GET      게시물 작성할 빈화면을 보여줌
+             /board/write              POST     작성한 게시물 저장
+    4) 수정: /board/modify?bno=번호     GET      게시물 수정하기 위해 읽어옴
+             /board/modify             POST     수정된 게시물 저장
