@@ -1,0 +1,56 @@
+1. JSON 
+    1) JavaScript Object Notation
+    2) 자바 스크립트 객체 표기법
+    3) 객체: {속성명1 : 속성값1, 속성명2 : 속성값2}   
+       배열: [{속성명1 : 속성값1, ...}, {속성명1 : 속성값1, ...}, ....]
+       Map: {키1 : {속성명1 : 속성값1, ...}, 키2 : {속성명1 : 속성값1, ...}, ...}
+
+2. JSON.stringify() / JSON.parse()
+    1) JS객체를 서버로 전송하려면, 직렬화(문자열로 변환)가 필요함
+    2) 서버가 보낸 데이터(JSON문자열)를 JS객체로 변환할 때, 역직렬화가 필요함
+    3) JSON.stringify()
+        -JS객체를 JSON문자열로 변환(직렬화, JS객체->JSON문자열)
+    4) JSON.parse()
+        -JSON문자열을 JS객체로 변환(역직렬화, JSON문자열->JS객체)
+    {name : "lee sun shin", age : 30} --JSON.stringify()--> '{name : "lee sun shin", age : 30}'
+    -------------JS객체--------------                        --------------String--------------
+    {name : "lee sun shin", age : 30} <--JSON.parse()-- '{name : "lee sun shin", age : 30}'
+    -------------JS객체--------------                    --------------String--------------
+
+3. databind(jackson)
+    1) JSON문자열을 자바객체로 변환해줌
+    2) 자바 컨트롤러가 자바객체로 변환된 JSON문자열을 받을 수 있음
+
+4. Ajax
+    1) Asychronous JavaScript and XML
+    2) 비동기 통신으로 데이터를 주고 받기위한 기술
+    3) XMML보다 JSON을 주로 사용
+    4) 웹페이지 전체(UI+data)가 아닌 일부(data)만 업데이트 가능
+
+5. REST(representational state transfer)
+    0) also known as RESTful
+    1) Roy Fielding이 제안
+    2) 웹서비스 디자인 아키텍처 접근 방식
+    3) 프로토콜에 독립적이며, 주로 HTTP를 사용해서 구현
+    4) 리소스 중심의 API 디자인 
+        -HTTP 메서드로 수행할 작업을 정의
+    5) 예 
+       리소스           POST                GET                 PUT                 DELETE
+       /orders      새 주문 만들기      모든 주문 검색      주문 대량 업데이트      모든 주문 삭제
+       /orders/1    Error              주문1에 대한        주문1이 있는경우        주문1 삭제
+                                       세부 정보 검색      주문1의 세부정보 업댓
+    6) 작업         URI                      HTTP메서드                       COMMENT
+      ----------------------------------------------------------------------------------------
+       읽기   /comment/read?cno=번호            GET                 지정된 번호의 댓글을 보여줌
+       쓰기   /comment/write                   POST                 작성한 댓글을 저장함
+       삭제   /comment/remove                  POST                 댓글을 삭제함
+       수정   /comment/modify                  POST                 수정된 게시물을 저장함
+    
+       <RESTful API 설계>
+       작업         URI                      HTTP메서드                       COMMENT
+      ----------------------------------------------------------------------------------------
+       읽기   /comments                        GET                  모든 댓글을 보여줌 
+              /comments/{cno}                  GET                  지정된 번호의 댓글을 보여줌 
+       쓰기   /comments                        POST                 새로운 댓글을 저장함
+       삭제   /comments/{cno}                  DELETE               지정된 번호의 댓글을 삭제함
+       수정   /comments/{cno}                  PUT/PATCH            수정된 댓글을 저장함
