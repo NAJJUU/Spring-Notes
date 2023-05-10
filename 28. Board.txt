@@ -23,3 +23,50 @@
              /board/write              POST     작성한 게시물 저장
     4) 수정: /board/modify?bno=번호     GET      게시물 수정하기 위해 읽어옴
              /board/modify             POST     수정된 게시물 저장
+
+3. 동적 SQL문
+    1) 공통 SQL문에 대해 조건값의 유무에 따라 동적으로 공통 SQL문에 조건절을 추가
+    2) 특징
+        -주로 SQL문의 조건절에서 사용
+        -조건절(where)에 조건을 동적으로 추가
+        -JSTL과 XML기반으로 동적 SQL문을 작성
+    3) <if> 태그 사용법
+        <where>
+            <if test="조건식">
+                추가할 구문
+            </if>
+            <if test="조건식">
+                추가할 구문
+            </if>
+        </where>
+    4) <choose> 태그 사용법
+        <choose>
+            <when test="조건식1">
+                구문1
+            </when>
+            <when test="조건식2">
+                구문2
+            </when>
+            ...
+            <otherwise>
+                구문n
+            </otherwise>
+        </choose>
+    5) <foreach> 태그 사용법
+        <foreach item="" collection="" index="" open="" close="" seperator="">
+        
+        </foreach>
+            -collection
+                -배열과 List게열 
+                -array, list로 표시함
+            -item
+                -반복문이 실행될 때마다 collection 속성에 지정된 값에 접근하여 차례대로 사용함
+            -index
+                -foreach문이 반복될 때마다 1씩 증가시키면서 접근하는 값의 위치를 나타냄 
+                -최초 값 위치는 0임
+            -open 
+                -해당 구문이 시작될 때 지정한 기호 표시
+            -close
+                -해당 구문이 끝날 때 지정한 기호 표시
+            -seperator
+                -한 번 이상 반복될 때 반복되는 사이에 지정한 기호를 추가 
