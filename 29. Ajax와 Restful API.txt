@@ -54,3 +54,6 @@
        쓰기   /comments                        POST                 새로운 댓글을 저장함
        삭제   /comments/{cno}                  DELETE               지정된 번호의 댓글을 삭제함
        수정   /comments/{cno}                  PUT/PATCH            수정된 댓글을 저장함
+
+6. ResponseEntity
+    1) 상태코드(status code) 값이 제대로 나오게 같이 보내줌
