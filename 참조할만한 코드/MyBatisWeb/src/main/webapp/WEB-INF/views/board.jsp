@@ -174,6 +174,34 @@
 					form.submit()
 				}
 			})
+			
+			let showList = function(bno) {
+			
+				$.ajax({
+					type: 'GET',						//요청 메서드
+					url: '/heart/comments?bno='+bno, 	//요청 URI
+					success: function(result) {
+						$("#commentList").html(toHtml(result))	//result는 서버가 전송한 데이터
+					},
+					error: function(){alert("error")}			//에러가 발생할 때, 
+				})
+			}
+			
+			let toHtml = function(comments) {
+				let tmp = "<ul style='display: block;'>"
+				comments.forEach(function(comment) {
+					tmp += '<li style="width: 100%;" data-cno='+comment.cno
+					tmp += ' data-pcon='+comment.pcno
+					tmp += ' data-bno='+comment.bno
+					tmp += ' comment=<span class="comment">'+comment.comment+'</span>'
+					tmp += ' commenter=<span class="commenter">'+comment.commenter+'</span>'
+					tmp += ' <button class="btn delBtn">삭제</button>'
+					tmp += '</li>'
+				})			
+				return tmp + "</ul>"
+			}
+			
+			showList(bno)
 		})
     </script>
     
@@ -209,12 +237,13 @@
 	    			<button type="button" id="modifyBtn" class="btn"><i class="fa-solid fa-pen-to-square" style="background-color: #ffc0cb"></i>수정</button>
 	    			<button type="button" id="removeBtn" class="btn"><i class="fa-solid fa-trash" style="background-color: #ffc0cb"></i>삭제</button>
 	    		</c:if>
+	    		<button type="button" id="listBtn" class="btn"><i class="fa-solid fa-list" style="background-color: #ffc0cb"></i>목록</button>
     		</div>
     	</form>
     	
     	<!-- <button type="button" id="sendBtn" class="btn" >SEND</button>
     	<button type="button" id="modBtn" class="btn" >수정하기</button> -->
-    	
+    	<button id="commentList"></button>
     </div>
 </body>
 </html>

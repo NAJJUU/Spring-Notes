@@ -2,6 +2,8 @@ package com.earth.heart.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,13 @@ public class CommentController {
 	@Autowired
 	CommentService commentService;
 
+	//
+	public ResponseEntity<String> remove(Integer cno, Integer bno, HttpSession session){
+		String commenter = (String) session.getAttribute("id");
+		
+		return new ResponseEntity<>("DEL_OK", HttpStatus.OK);
+	}
+	
 	//지정된 게시물의 모든 댓글을 가져오는 메서드
 	@GetMapping("/comments")
 	@ResponseBody
@@ -33,6 +42,8 @@ public class CommentController {
 		}
 		//return list;
 	}
+	
+	
 }
 
 

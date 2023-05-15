@@ -37,6 +37,7 @@
 				tmp += ' data-bno='+comment.bno
 				tmp += ' comment=<span class="comment">'+comment.comment+'</span>'
 				tmp += ' commenter=<span class="commenter">'+comment.commenter+'</span>'
+				tmp += ' <button class="btn delBtn">삭제</button>'
 				tmp += '</li>'
 			})			
 			return tmp + "</ul>"
@@ -45,6 +46,23 @@
     	$(document).ready(function() {
     		$("#sendBtn").click(function() {
 				showList(bno)
+			})
+					
+			//$(".delBtn").click(function() {		//[send]버튼 클릭하고 나서 [삭제]버튼이 보임()
+			$("#commentList").on("click", ".delBtn",function(){
+				//alert("삭제버튼 클릭")
+				let cno = $(this).parent().attr("data-cno")	//<li>태그는 <button>의 부모임
+				let bno = $(this).parent().attr("data-bno")	
+				
+				$.ajax({
+					type: 'DELETE',							//요청메서드
+					url: '/heart/comments'+cno+'?bno='+bno,	//요청URI
+					success: function(result) {				//서버로부터 응답이 도착하면 호출될 함수
+						alert(result)						//result는 서버가 전송한 데이터
+						showList(bno)
+					},
+					error: function() { alert("error") }	//에러가 발생했을 때 호출될 함수
+				})
 			})
 		})
     
