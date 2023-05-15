@@ -1,0 +1,57 @@
+1. 깃 소개
+    1) 리눅스 토발즈(리눅스 창시자-1991년 취미로 개발)가 깃 개발
+        -Bitkeeper의 불편함과 상용화에 따라 깃 개발을 하게 됨
+        -불과 2주만에 개발
+        -2005년 Git 탄생
+    2) 목적
+        -커뮤니케이션
+        -협업(Cooperation)
+            -돈이 걸린, 프로로서 일하는 개발자, 퍼블리셔와 협업
+
+2. GitHub
+    1) 프로젝트 호스트(host) 사이트
+    2) Git을 기반
+    3) Git을 보다 쉽게 관리해 줄 수 있는 웹 콘솔이 필요해 만들어짐
+    4) 2008년 2월 서비스 시작
+
+3. VCS
+    1) Version Control System
+    2) Source Control System
+    3) 프로젝트의 진행 상황을 저장
+        -데이터의 과거와 현재 상태를 관리하는 것
+    4) 복수의 사람들이 사용하는 것임
+    5) 협업시 서로 간에 상태를 똑같게 유지하는 기능
+
+4. Git 
+    1) 동시 다발적인 브랜치(branch) 작업
+    2) Git 만들기 시작한지 3일만에 Git 자체의 버전 관리 시작함
+        -2주 무렵 처음으로 복수의 브랜치(branch)를 한 번에 병합(merge)하기 시작하면서 완성됨
+    3) 대중성, 검증된 안정성!
+    4) DVCS
+        -Distributed Version Control System
+        -분산 버전 관리 시스템
+        -클라이언트 각자가 온전한 전체 저장소 사본을 로컬에 가짐
+    5) 사실상 업계 표준
+
+5. 버전관리 도구 형태
+    1) 중앙 집중식
+        -CVS
+        -Subversion
+    2) 분산
+        -Git
+
+6. Git 기본 용어
+    1) main
+        -깃의 기본 브랜치 
+    2) origin(=remote(원격))
+        -깃의 기본 원격 브랜치 별칭
+    3) HEAD
+        -현재 작업 브랜치의 위치
+
+7. Git 설정 명령
+    1) git config [설정키] [설정값] : 해당 깃 저장소의 설정
+       git config user.name earth
+       git config user.email earth@gmail.com 
+    2) git config --global [설정키] [설정값] : 모든 깃 저장소에 해당하는 설정 
+       git config user.name earth
+       git config user.email earth@gmail.com 
