@@ -55,3 +55,26 @@
     2) git config --global [설정키] [설정값] : 모든 깃 저장소에 해당하는 설정 
        git config user.name earth
        git config user.email earth@gmail.com 
+
+8. 3단계 개념
+    1) 워킹 디렉토리(작업 디렉토리)
+    2) stagine area(스테이징 영역)
+        -단순한 파일을 지칭, 커밋할 파일의 정보 저장(Index)
+    3) Git 디렉토리(Local Repository)
+        -프로젝트의 메타 정보, 객체 DB 
+
+9. Git 기본 버전 관리 명령어
+    1) git init
+        -깃 저장소(Repository) 생성
+    2) git help [명령어]
+        -명령어 도움말 보기
+    3) git status
+        -깃 버전 관리 상테 확인(작업 디렉토리에 있는 파일들이 git의 track을 받고 있는지 아닌지를 알려줌)
+    4) git add
+        -버전 관리 팡리 준비
+        -git add <파일명> ...
+            -특정 파일을 버전 관리 준비(스테이징 영역)
+        -git add .
+            -해당 디렉토리의 모든 파일에 대해 버전 관리 준비(스테이징 영역)
+    5) git rm --cached [파일명]
+        -실수로 추가한 파일의 버전 관리 안하기(track상태를 untrack 상태로 변경)
