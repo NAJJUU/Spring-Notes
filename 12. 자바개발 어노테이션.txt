@@ -58,6 +58,8 @@
     5) @ResponseBody
         -메서드를 실행 후 결과를 HTTP 응답에 담아 전달해주는 역할
         -다양한 데이터 포맷을 응답 가능(JSON, XML 등)
+    6) @PathVariable
+        -클라이언트의 요청 URL에 담긴 특정값을 담을 때 사용
 
 5. Bean의 의존관계 주입 Annotation 
     1) @Autowired
