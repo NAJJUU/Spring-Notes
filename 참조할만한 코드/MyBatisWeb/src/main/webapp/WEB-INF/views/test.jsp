@@ -11,6 +11,7 @@
 </head>
 <body>
     <h2>CommentTest</h2>
+    comment: <input type="text" name="comment" />
     <button id="sendBtn">SEND</button>
     <div id="commentList"></div>
     
@@ -44,8 +45,30 @@
 		}
 	    
     	$(document).ready(function() {
+    		showList(bno)
+    	
     		$("#sendBtn").click(function() {
-				showList(bno)
+				let cno = $(this).attr("data-cno")
+				let comment = $("input[name=comment]").val()
+				
+				if(comment.trim() == ''){
+					alert("댓글을 입력해 주세요.")
+					$("input[name=comment]").focus()
+					return
+				}
+				
+				$.ajax({
+					type: 'post',
+					url: '/heart/comments?bno='+bno,
+					headers: {"content-type" : "application/json"},		//요청헤더
+					data: JSON.stringify({bno:bno, comment:comment}),	//서버로 전송할 데이터, stringify()로 직렬화 필요
+					success: function(result) {							//서버로부터 응답이 도착하면 성공했을 때, 호출될 함수
+						alert(result)
+						showList(bno)
+					},
+					error: function() {alert("error")}					//에러가 발생했을 때, 호출될 함수
+				})
+				
 			})
 					
 			//$(".delBtn").click(function() {		//[send]버튼 클릭하고 나서 [삭제]버튼이 보임()
@@ -56,7 +79,7 @@
 				
 				$.ajax({
 					type: 'DELETE',							//요청메서드
-					url: '/heart/comments'+cno+'?bno='+bno,	//요청URI
+					url: '/heart/comments/'+cno+'?bno='+bno,	//요청URI
 					success: function(result) {				//서버로부터 응답이 도착하면 호출될 함수
 						alert(result)						//result는 서버가 전송한 데이터
 						showList(bno)
@@ -65,7 +88,6 @@
 				})
 			})
 		})
-    
     </script>
 </body>
 </html>

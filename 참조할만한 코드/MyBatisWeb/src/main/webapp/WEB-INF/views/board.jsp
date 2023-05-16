@@ -47,6 +47,7 @@
 			border-bottom: 2px solid #646464;
 			padding: 8px;
 			font-size: 18px;
+			outline: none;
 		}
 		
 		textarea{
@@ -59,6 +60,7 @@
 			border-bottom: 2px solid #646464;
 			resize: none;
 			padding: 8px;
+			outline: none;
 		}
 		
 		.total-btn{
@@ -190,16 +192,32 @@
 			let toHtml = function(comments) {
 				let tmp = "<ul style='display: block;'>"
 				comments.forEach(function(comment) {
-					tmp += '<li style="width: 100%;" data-cno='+comment.cno
+					tmp += '<li style="width: 100%; background-color: #fafaaa; border-bottom: 1px solid #646464; color: black;" data-cno='+comment.cno
 					tmp += ' data-pcon='+comment.pcno
 					tmp += ' data-bno='+comment.bno
 					tmp += ' comment=<span class="comment">'+comment.comment+'</span>'
 					tmp += ' commenter=<span class="commenter">'+comment.commenter+'</span>'
-					tmp += ' <button class="btn delBtn">삭제</button>'
+					tmp += ' <button class="btn delBtn"><i class="fa-solid fa-trash" style="background-color: #ffc0cb"></i>삭제</button>'
 					tmp += '</li>'
 				})			
 				return tmp + "</ul>"
 			}
+			
+			$("#commentList").on("click", ".delBtn",function(){
+				//alert("삭제버튼 클릭")
+				let cno = $(this).parent().attr("data-cno")	//<li>태그는 <button>의 부모임
+				let bno = $(this).parent().attr("data-bno")	
+				
+				$.ajax({
+					type: 'DELETE',							//요청메서드
+					url: '/heart/comments/'+cno+'?bno='+bno,	//요청URI
+					success: function(result) {				//서버로부터 응답이 도착하면 호출될 함수
+						alert(result)						//result는 서버가 전송한 데이터
+						showList(bno)
+					},
+					error: function() { alert("error") }	//에러가 발생했을 때 호출될 함수
+				})
+			})
 			
 			showList(bno)
 		})
