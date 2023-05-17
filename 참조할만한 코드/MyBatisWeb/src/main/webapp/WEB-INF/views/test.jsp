@@ -13,10 +13,11 @@
     <h2>CommentTest</h2>
     comment: <input type="text" name="comment" />
     <button id="sendBtn">SEND</button>
+    <button id="modBtn">수정하기</button>
     <div id="commentList"></div>
     
     <script type="text/javascript">
-	    let bno = 1133
+	    let bno = 1385
 		
 		let showList = function(bno) {
 			
@@ -35,9 +36,10 @@
 			comments.forEach(function(comment) {
 				tmp += '<li data-cno='+comment.cno
 				tmp += ' data-pcon='+comment.pcno
-				tmp += ' data-bno='+comment.bno
+				tmp += ' data-bno='+comment.bno+'>'
 				tmp += ' comment=<span class="comment">'+comment.comment+'</span>'
 				tmp += ' commenter=<span class="commenter">'+comment.commenter+'</span>'
+				tmp += ' <button class="btn modBtn">수정</button>'
 				tmp += ' <button class="btn delBtn">삭제</button>'
 				tmp += '</li>'
 			})			
@@ -87,6 +89,42 @@
 					error: function() { alert("error") }	//에러가 발생했을 때 호출될 함수
 				})
 			})
+			
+			$("#commentList").on("click", ".modBtn", function() {
+				//alert("댓글 수정 버튼 클릭!")
+				let cno = $(this).parent().attr("data-cno")	//<li>태그는 <button>의 부모임
+				let comment = $("span.comment", $(this).parent()).text()	//클릭된 수정버튼의 부모(li)의 span태그의 텍스트만 가져옴
+				
+				//comment의 내용을 input에 출력하기
+				$("input[name=comment]").val(comment)
+				//cno 전달하기
+				$("#modBtn").attr("data-cno", cno)
+			})
+			
+			$("#modBtn").click(function() {
+				let cno = $(this).attr("data-cno")
+				let comment = $("input[name=comment]").val()
+				
+				if(comment.trim() == ''){
+					alert("댓글을 입력해 주세요.")
+					$("input[name=comment]").focus()
+					return
+				}
+				
+				$.ajax({
+					type: 'PATCH',					//요청메서드
+					url: '/heart/comments/'+cno,	//요청 URI
+					headers: {"content-type" : "application/json"},		//요청헤더
+					data: JSON.stringify({cno:cno, comment:comment}),	//서버로 전송할 데이터, stringify()로 직렬화 필요
+					success: function(result) {							//서버로부터 응답이 도착하면 성공했을 때, 호출될 함수
+						alert(result)
+						showList(bno)
+					},
+					error: function() {alert("error")}					//에러가 발생했을 때, 호출될 함수
+				})
+				
+			})
+			
 		})
     </script>
 </body>

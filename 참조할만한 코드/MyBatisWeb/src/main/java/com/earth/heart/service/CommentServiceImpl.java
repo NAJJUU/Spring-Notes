@@ -38,8 +38,10 @@ public class CommentServiceImpl implements CommentService {
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public int remove(Integer cno, Integer bno, String commenter) throws Exception {
-		int rowCnt = boardDao.updateCommentCnt(bno, -1);
-		rowCnt = commentDao.delete(cno, commenter);
+		int	rowCnt = commentDao.delete(cno, commenter);
+		if(rowCnt == 1) {
+			boardDao.updateCommentCnt(bno, -1);
+		}
 		return rowCnt;
 	}
  

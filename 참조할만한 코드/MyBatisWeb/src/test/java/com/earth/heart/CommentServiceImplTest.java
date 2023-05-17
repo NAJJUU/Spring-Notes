@@ -56,7 +56,7 @@ public class CommentServiceImplTest {
 		System.out.println("bno = "+bno);
 		
 		commentDao.deleteAll(bno);
-		CommentDTO commentDTO = new CommentDTO(bno, 0, "괜찮든 아니든 달라지는 건 없음", "나쥬");
+		CommentDTO commentDTO = new CommentDTO(bno, 0, "괜찮든 아니든 달라지는 건 없음", "earth");
 		assertTrue(boardDao.select(bno).getComment_cnt()==0);
 		assertTrue(commentService.write(commentDTO)==1); 		//댓글 작성함
 		assertTrue(boardDao.select(bno).getComment_cnt()==1);
