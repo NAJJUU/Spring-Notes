@@ -32,3 +32,59 @@
         -src/main/resources
         -src/test/java 
         -src/test/resources
+
+5. 레이아웃
+    1) 반복되는 화면 영역을 별도로 분리하여 여러 다른 페이지에 적용할 수 있음
+        -header
+        -footer
+        -menu
+        -상단 검색창
+        -기타 공통 영역 
+    2) 의존성
+        <dependency>
+			<groupId>nz.net.ultraq.thymeleaf</groupId>
+			<artifactId>thymeleaf-layout-dialect</artifactId>
+		</dependency>
+    3) 관련 문법
+        -th:replace - th:fragment로 선언된 HTML 태그를 다른 HTML로 교체하는 것
+    4) 레이아웃 만들기
+        -공통영역 만들기 - header, footer 
+            -공통영역 header 코드 
+                -ex) <div th:fragment="header">
+            -공통영역 footer 코드
+                -ex) <div th:fragment="footer">
+        -공통 영역을 포함한 레이아웃 만들기
+            -공통 영역 포함한 레이아웃 코드
+                -ex) 
+                    <!-- header 적용 -->
+                    <div th:replace="fragments/header::header"></div>
+
+                    <!-- content 적용 -->
+                    <div layout:fragment="content"></div>
+
+                    <!-- footer 적용 -->
+                    <div th:replace="fragments/footer::footer"></div>
+            -(content를 만들면서) 공통 영역 적용하기 
+                -레이아웃을 적용한 콘텐츠 코드 
+                    -ex)
+                        <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+                          layout:decorate="~{layouts/mainLayout}">
+
+                        <div layout:fragment="content">
+
+6. Front-End
+    1) Spring Boot에서 공식적으로 제공하는 템플릿 엔진
+        -Thymeleaf Template
+    2) 자바스크립트 라이브러리(jQuery)
+    3) UI 템플릿
+        -Bootstarap5: 오픈 소스, 범용적인 서비스 UI템플릿
+
+7. 화면 개발 템플릿(Thymeleaf)
+    1) 기본 문법
+        -th:href
+            -HTML a태그처럼 링크를 처리하는 문법
+                -내부 페이지 
+                    -ex) <a th:href="@{/login}">Login</a>
+                -직접 URL 
+                -변수로 전달
+                -파라미터 전달
